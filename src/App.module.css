@@ -15,6 +15,12 @@
   background: rgb(89, 162, 204);
   color: #000;
   cursor: pointer;
+  box-shadow: inset 0px 0px 0px 6px rgb(89, 162, 204);
+  transition: 0.3s;
+}
+.box:hover {
+  background: rgb(80, 109, 201);
+  box-shadow: inset 0px 0px 0px 6px #fff;
 }
 .box .top {
   display: flex;

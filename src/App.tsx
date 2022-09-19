@@ -1,12 +1,17 @@
 import Container from 'react-bootstrap/Container'
 import style from './App.module.css'
+import { useState } from 'react'
 
 function App() {
+  const [show, setShow] = useState(false)
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
+
   return (
     <Container fluid className={style.root}>
       <h1 className={style.header}>KINO</h1>
       <div className={style.container}>
-        {Array.from(Array(30).keys()).map((item: number) => (
+        {Array.from(Array(35).keys()).map((item: number) => (
           <div key={item} className={style.box}>
             <div className={style.top}>
               <p>
