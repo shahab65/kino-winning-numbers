@@ -1,60 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
-import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container'
+import style from './App.module.css'
 
 function App() {
   return (
-    <div className="App">
-      <Button>test</Button>
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
-  );
+    <Container fluid className={style.root}>
+      <h1 className={style.header}>KINO</h1>
+      <div className={style.container}>
+        {Array.from(Array(30).keys()).map((item: number) => (
+          <div key={item} className={style.box}>
+            <div className={style.top}>
+              <p>
+                <span>GAME</span>
+                <span>541528</span>
+              </p>
+              <p>
+                <span>DATE</span>
+                <span>09/19/2022</span>
+              </p>
+            </div>
+            <div className={style.numbers}>
+              {Array.from(Array(20).keys()).map((number: number) => (
+                <span key={number}>{getRandomArbitrary(0, 99)}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </Container>
+  )
 }
 
-export default App;
+export default App
+
+function getRandomArbitrary(min: number, max: number) {
+  return Math.floor(Math.random() * (max - min) + min)
+}
