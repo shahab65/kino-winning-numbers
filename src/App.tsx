@@ -2,10 +2,12 @@ import React from 'react';
 import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
 import './App.css';
+import Button from 'react-bootstrap/Button';
 
 function App() {
   return (
     <div className="App">
+      <Button>test</Button>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <Counter />
