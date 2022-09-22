@@ -1,6 +1,6 @@
 import { Kino } from '../../api/kino';
 export interface IBoxProps {
-  onClick?: () => void;
+  onSetSelectedKino?: (kino: Kino) => void;
   isModal?: boolean;
   kino: Kino;
 }

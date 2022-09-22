@@ -2,12 +2,17 @@ import clsx from 'clsx';
 import style from './Box.module.css';
 import { IBoxProps } from './Box.types';
 import { showDate } from '../../utils/tools';
+import { Kino } from '../../api/kino';
 
-const Box = ({ onClick, isModal, kino }: IBoxProps) => {
+const Box = ({ onSetSelectedKino, isModal, kino }: IBoxProps) => {
+  const onKinoSelect = (kino: Kino) => {
+    onSetSelectedKino && onSetSelectedKino(kino);
+  };
+
   return (
     <div
       className={clsx(style.box, isModal && style.isModal)}
-      onClick={onClick}>
+      onClick={() => onKinoSelect(kino)}>
       <div className={style.top}>
         <p>
           <span>GAME</span>

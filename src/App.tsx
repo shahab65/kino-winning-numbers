@@ -3,15 +3,15 @@ import Container from 'react-bootstrap/Container';
 import Modal from 'react-bootstrap/Modal';
 import style from './App.module.css';
 import Box from './components/Box';
-import { useKinos } from './api/kino';
+import { useKinos, Kino } from './api/kino';
 import Spinner from 'react-bootstrap/Spinner';
 
 function App() {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
   const { data, isLoading, isError, error, isSuccess, refetch } = useKinos();
   console.log('data', data);
+  const [selectedKino, setSelectedKino] = useState<Kino | null>(null);
+  const onSetSelectedKino = (kino: Kino | null) => setSelectedKino(kino);
+
   return (
     <>
       <Container fluid className={style.root}>
@@ -20,16 +20,22 @@ function App() {
 
         <div className={style.container}>
           {data?.map((kino) => (
-            <Box key={kino.gameNumber} onClick={handleShow} kino={kino} />
+            <Box
+              key={kino.gameNumber}
+              onSetSelectedKino={onSetSelectedKino}
+              kino={kino}
+            />
           ))}
         </div>
       </Container>
       <Modal
-        show={show}
-        onHide={handleClose}
+        show={!!selectedKino}
+        onHide={() => onSetSelectedKino(null)}
         centered
         dialogClassName={style.modalDialog}>
-        {/* <Box isModal /> */}
+        {selectedKino && (
+          <Box isModal kino={selectedKino} onSetSelectedKino={() => {}} />
+        )}
       </Modal>
     </>
   );
