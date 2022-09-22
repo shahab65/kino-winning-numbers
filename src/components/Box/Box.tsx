@@ -1,9 +1,9 @@
-import clsx from 'clsx'
-import { getRandomArbitrary } from '../../lib'
-import style from './Box.module.css'
-import { IBoxProps } from './Box.types'
+import clsx from 'clsx';
+import style from './Box.module.css';
+import { IBoxProps } from './Box.types';
+import { showDate } from '../../utils/tools';
 
-const Box = ({ onClick, isModal }: IBoxProps) => {
+const Box = ({ onClick, isModal, kino }: IBoxProps) => {
   return (
     <div
       className={clsx(style.box, isModal && style.isModal)}
@@ -11,20 +11,20 @@ const Box = ({ onClick, isModal }: IBoxProps) => {
       <div className={style.top}>
         <p>
           <span>GAME</span>
-          <span>541528</span>
+          <span>{kino.gameNumber}</span>
         </p>
         <p>
           <span>DATE</span>
-          <span>09/19/2022</span>
+          <span>{showDate(kino.gameDate)}</span>
         </p>
       </div>
       <div className={style.numbers}>
-        {Array.from(Array(20).keys()).map((number: number) => (
-          <span key={number}>{getRandomArbitrary(0, 99)}</span>
+        {kino.drawNumbers.map((drawNumber) => (
+          <span key={drawNumber}>{drawNumber}</span>
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Box
+export default Box;
