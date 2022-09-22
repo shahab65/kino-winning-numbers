@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Modal from 'react-bootstrap/Modal';
+import Spinner from 'react-bootstrap/Spinner';
 import style from './App.module.css';
 import Box from './components/Box';
 import { useKinos, Kino } from './api/kino';
-import Spinner from 'react-bootstrap/Spinner';
 
 function App() {
   const { data, isLoading, isError, error, isSuccess, refetch } = useKinos();

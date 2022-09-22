@@ -1,4 +1,4 @@
-import { DateType } from '../api/kino';
+import { DateType } from 'api/kino';
 
 export const showDate = (date: DateType) => {
   const year = date.year;

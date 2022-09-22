@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import style from './Box.module.css';
 import { IBoxProps } from './Box.types';
-import { showDate } from '../../utils/tools';
-import { Kino } from '../../api/kino';
+import { showDate } from 'utils/tools';
+import { Kino } from 'api/kino';
 
 const Box = ({ onSetSelectedKino, isModal, kino }: IBoxProps) => {
   const onKinoSelect = (kino: Kino) => {
