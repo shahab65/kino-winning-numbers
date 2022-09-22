@@ -3,12 +3,14 @@ import Container from 'react-bootstrap/Container'
 import Modal from 'react-bootstrap/Modal'
 import style from './App.module.css'
 import Box from './components/Box'
+import { useVideoList } from './api/kino'
 
 function App() {
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
-
+  const { data, isLoading, isError, error, isSuccess, refetch } = useVideoList()
+  console.log('data', data)
   return (
     <>
       <Container fluid className={style.root}>
