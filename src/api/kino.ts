@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useQuery } from 'react-query';
+import config from 'config';
 
 export type DateType = {
   d: string;
@@ -16,6 +17,6 @@ export type Kino = {
 
 export function useKinos() {
   return useQuery<Kino[], string>('kinos', () =>
-    axios.get('http://localhost:3004/payload').then((res) => res.data)
+    axios.get(`${config.apiUrl}/payload`).then((res) => res.data)
   );
 }
